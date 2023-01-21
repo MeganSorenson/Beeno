@@ -13,7 +13,7 @@ def user():
     if request.method == 'GET':
         # do user authentication and return a satus report
         # args needs username and password
-        args = request.args()
+        args = request.args
         username = args.get('username', "")
         password = args.get('password', "")
 
@@ -50,7 +50,7 @@ def book():
     if request.method == 'GET':
         # check if there is a booking and return the data for that booking
         # args needs booking_id
-        args = request.args()
+        args = request.args
         booking_id = args.get('booking_id')
 
         if "" in [booking_id]:
@@ -129,3 +129,6 @@ def park():
         return manager.add_parking_stall(user_id, latitude, longitude, image_url, place, price, description)
 
     return jsonify(status="error", message="non-compatible request made to /park")
+
+if __name__ == "__main__":
+    app.run(port=port)
