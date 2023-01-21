@@ -23,8 +23,8 @@ CREATE TABLE parking_spots (
     city TEXT NOT NULL,
     country TEXT NOT NULL,
     description TEXT NOT NULL,
-    owner_id INTEGER NOT NULL,
     price REAL NOT NULL,
+    owner_id INTEGER NOT NULL,
     image_url TEXT NOT NULL,
     FOREIGN KEY (owner_id) REFERENCES users(id)
 );
