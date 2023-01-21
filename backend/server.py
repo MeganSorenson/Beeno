@@ -1,15 +1,19 @@
 from flask import Flask, request, jsonify
 from flask_managers import User_Manager, Book_Manager, Park_Manager
+from db import Db
 
 app = Flask(__name__)
 port = 1999
+db = None
+user_manager = None
+book_manager = None
+park_manager = None
+db_name = 'database.db'
 
 
 @app.route('/user', methods=['GET', 'POST'])
 def user():
     # if http method is not compatible for this endpoint, sends a json status response
-    manager = User_Manager()
-
     if request.method == 'GET':
         # do user authentication and return a satus report
         # args needs username and password
@@ -20,7 +24,7 @@ def user():
         if "" in [username, password]:
             return jsonify(status="error", message="non-compatible request made to /user")
 
-        return manager.check_user_authentication(username, password)
+        return user_manager.check_user_authentication(username, password)
 
     elif request.method == 'POST':
         # add new user to database
@@ -37,7 +41,7 @@ def user():
         if "" in [username, password, email, first_name, last_name, phone_number]:
             return jsonify(status="error", message="non-compatible request made to /user")
 
-        return manager.add_new_user(username, password, email, first_name, last_name, phone_number)
+        return user_manager.add_new_user(username, password, email, first_name, last_name, phone_number)
 
     return jsonify(status="error", message="non-compatible request made to /user")
 
@@ -45,8 +49,6 @@ def user():
 @app.route('/book', methods=['GET', 'POST'])
 def book():
     # if http method is not compatible for this endpoint, sends a json status response
-    manager = Book_Manager()
-
     if request.method == 'GET':
         # check if there is a booking and return the data for that booking
         # args needs booking_id
@@ -56,48 +58,44 @@ def book():
         if "" in [booking_id]:
             return jsonify(status="error", message="non-compatible request made to /book")
 
-        return manager.get_booking(booking_id)
+        return book_manager.get_booking(booking_id)
 
     elif request.method == 'POST':
         # add a new booking to the database, booking_id is created by us
-        # payload needs day, month, parking_id, user_id
+        # payload needs date, parking_id, user_id
         # where user_id is the id of the user booking the parking stall
         booking_data = request.get_json(force=True)
-        day = booking_data.get('day', "")
-        month = booking_data.get('month', "")
+        date = booking_data.get('date', "")
         parking_id = booking_data.get('parking_id', "")
         user_id = booking_data.get('user_id')
 
-        if "" in [day, month, parking_id, user_id]:
+        if "" in [date, parking_id, user_id]:
             return jsonify(status="error", message="non-compatible request made to /book")
 
-        return manager.book_parking_stall(day, month, parking_id, user_id)
+        return book_manager.book_parking_stall(date, parking_id, user_id)
 
     return jsonify(status="error", message="non-compatible request made to /book")
 
 
-@app.route('/park?type=all', methods=['GET', 'POST'])
+@app.route('/park', methods=['GET', 'POST'])
 def park():
     # if http method is not compatible for this endpoint, sends a json status response
-    manager = Park_Manager()
-
     if request.method == 'GET':
         # either gets all parking
         # args needs either
-        # type which is "all", place with city/country, day, and month ... or
+        # type which is "all", place with city/country, date ... or
         # type which is "single" and parking_id
         args = request.args
         type = args.get('type', "")
         if type == "all":
             # get all parking stalls with the given time and datae available for the given place
             place = args.get('place', "")
-            day = args.get('day', "")
-            month = args.get('month', "")
+            date = args.get('date', "")
 
-            if "" in [place, day, month]:
+            if "" in [place, date]:
                 return jsonify(status="error", message="non-compatible request made to /park")
 
-            return manager.get_all_parking_with(place, day, month)
+            return park_manager.get_all_parking_with(place, date)
         elif type == "single":
             # get a singe parking stall with the gicen parking_id
             parking_id = args.get('parking_id', "")
@@ -105,7 +103,7 @@ def park():
             if "" in [parking_id]:
                 return jsonify(status="error", message="non-compatible request made to /park")
 
-            return manager.get_parking_stall(parking_id)
+            return park_manager.get_parking_stall(parking_id)
         else:
             # if there was no type specified
             return jsonify(status="error", message="non-compatible request made to /park")
@@ -126,9 +124,17 @@ def park():
         if "" in [user_id, latitude, longitude, image_url, place, price, description]:
             return jsonify(status="error", message="non-compatible request made to /park")
 
-        return manager.add_parking_stall(user_id, latitude, longitude, image_url, place, price, description)
+        return park_manager.add_parking_stall(user_id, latitude, longitude, image_url, place, price, description)
 
     return jsonify(status="error", message="non-compatible request made to /park")
 
+
 if __name__ == "__main__":
+    db = Db(db_name)
+    db.init_db()
+
+    user_manager = User_Manager(db)
+    book_manager = Book_Manager(db)
+    park_manager = Park_Manager(db)
+
     app.run(port=port)

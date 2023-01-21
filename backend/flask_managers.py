@@ -1,7 +1,7 @@
 class User_Manager:
     # creates a user manager that encapsulates the functionality of an http request to /user
-    def __init__(self):
-        pass
+    def __init__(self, db):
+        self.db = db
 
     def check_user_authentication(self, username, password):
         # checks the database if the username and the password match
@@ -18,8 +18,8 @@ class User_Manager:
 
 class Book_Manager:
     # creates a user manager that encapsulates the functionality of an http request to /book
-    def __init__(self):
-        pass
+    def __init__(self, db):
+        self.db = db
 
     def get_booking(self, booking_id):
         # checks if there is a booking in the database with the given booking_id
@@ -36,8 +36,8 @@ class Book_Manager:
 
 class Park_Manager:
     # creates a park manager that encapsulates the functionality of an http request to /park
-    def __init__(self):
-        pass
+    def __init__(self, db):
+        self.db = db
 
     def get_all_parking_with(place, date):
         # filters through database for ony prking stalls in the given place and
