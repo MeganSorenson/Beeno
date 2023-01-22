@@ -18,7 +18,9 @@ class User_Manager:
         rows = cur.fetchall()
 
         if len(rows) == 1:
-            return jsonify(status="success", message="login successful")
+            row = rows[0]
+            id = row[0]
+            return jsonify(status="success", message="login successful", user_id=id)
         else:
             return jsonify(status="error", message="invalid username or password, login unsuccesful")
 
