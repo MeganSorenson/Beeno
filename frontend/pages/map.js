@@ -23,6 +23,7 @@ new mapboxgl.Marker(el)
 .setLngLat(monument)
 .setPopup(popup) // sets a popup on this marker
 .addTo(map).addTo(map)
+.addTo(map)
 
 
 function getBookings() {
