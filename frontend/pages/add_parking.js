@@ -55,3 +55,39 @@ function handleAddParking() {
             console.log(error);
         });
 }
+
+
+$(document).ready(function () {
+    console.log("ready!");
+    let id = getCookie("user_id")
+
+    fetch(`http://127.0.0.1:1999/park?type=user&user_id=${id}`)
+        .then(response => {
+            return response.json();
+        })
+        .then(json => {
+            console.log(json);
+            let container = document.getElementById("my_parking_stalls");
+            for (const parking_id in json) {
+                let tr = document.createElement("tr");
+
+                let lonTd = document.createElement("td");
+                lonTd.innerText = json[parking_id].lon
+                tr.appendChild(lonTd);
+
+                let placeTd = document.createElement("td");
+                placeTd.innerText = json[parking_id].place
+                tr.appendChild(placeTd);
+
+                let addressTd = document.createElement("td");
+                addressTd.innerText = json[parking_id].address
+                tr.appendChild(addressTd);
+
+                container.appendChild(tr);
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+});
