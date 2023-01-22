@@ -37,7 +37,24 @@ class Book_Manager:
         # checks if there is a booking in the database with the given booking_id
         # returns a json of the booking with the given booking_id
         # or json status update with "status" that is "error" and "message" that is a description of the error
-        pass
+        cur = self.db.cur
+        cur.execute("SELECT * from reservations WHERE id=?", (booking_id))
+
+        rows = cur.fetchall()
+
+        if len(rows) == 1:
+            data = rows[0]
+            id = data[0]
+            date = data[1]
+            parking_id = data[2]
+            reserver_id = data[3]
+            owner_id = data[4]
+
+            return jsonify(booking_id=id, booking_date=date,
+                           parking_id=parking_id, reserver_id=reserver_id,
+                           stall_owner_id=owner_id)
+        else:
+            return jsonify(status="error", message="no booking with given id")
 
     def book_parking_stall(self, date, parking_id, user_id):
         # checks if there is already a booking for the given parking_id with the given date
