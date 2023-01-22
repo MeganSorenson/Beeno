@@ -31,7 +31,7 @@ CREATE TABLE parking_spots (
 
 CREATE TABLE reservations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    date DATETIME NOT NULL,
+    date TEXT NOT NULL,
     parking_id INTEGER NOT NULL,
     reserver_id INTEGER NOT NULL,
     FOREIGN KEY (parking_id) REFERENCES parking_spots(id),
