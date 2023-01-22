@@ -74,7 +74,20 @@ class Book_Manager:
         # checks if there is already a booking for the given parking_id with the given date
         # returns a json object with "status" that is either "success" or "error"
         # and "message" that is a description of the status
-        pass
+        cur = self.db.cur
+
+        cur.execute(
+            "SELECT * FROM reservations WHERE date=? AND parking_id=?", (date,parking_id))
+        rows = cur.fetchall()
+
+        if len(rows) >= 1:
+            return jsonify(status="error", message="parking space already taken")
+        else:
+            cur.execute(
+                "INSERT INTO reservations (date,parking_id,reserver_id) VALUES (?,?,?);",
+                (date,parking_id,user_id,))
+            self.db.conn.commit()
+            return jsonify(status="success", message="insert successful")
 
 
 class Park_Manager:
@@ -91,9 +104,9 @@ class Park_Manager:
     def get_parking_stall(self, parking_id):
         # checks if there is a parking_stall in the database with the given parking_id
         # returns a json of the parking with the given parking_id
-        # or json status update with "status" that is "error" and "message" that is a description of the error
+        # or json status update with "status" that is "error" and "message" that is a description of the error        
         pass
-
+  
     def add_parking_stall(self, user_id, latitude, longitude, image_url, place, price, description):
         # returns a json object with "status" that is either "success" or "error"
         # and "message" that is a description of the status
