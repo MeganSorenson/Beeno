@@ -1,0 +1,6 @@
+@port = 1999
+@host = localhost
+
+GET http://{{host}}:{{port}}/user
+    ?username=admin
+    &password=password

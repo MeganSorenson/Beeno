@@ -31,8 +31,7 @@ CREATE TABLE parking_spots (
 
 CREATE TABLE reservations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    month INTEGER NOT NULL,
-    date INTEGER NOT NULL,
+    date DATETIME NOT NULL,
     parking_id INTEGER NOT NULL,
     reserver_id INTEGER NOT NULL,
     owner_id INTEGER NOT NULL,
