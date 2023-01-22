@@ -17,23 +17,23 @@
 <body>
   <div id="navbar"></div>
   <div class="data_field_title">Reserve a Parking Spot</div>
-  <div class = "data_field_container">
+  <div class="data_field_container">
     <div class="data_field">
-        <input type="text" class="data_input" id="date" placeholder="Date: YYYY-MM-DD" />
+      <input type="text" class="data_input" id="date" placeholder="Date: YYYY-MM-DD" />
     </div>
     <div class="data_field">
-        <select name="locations" class = "data_input" id="locations">
-          <option value="">-- select your city --</option>
-          <option value="Vancouver">Vancouver</option>
-          <option value="Surrey">Surrey</option>
-          <option value="Burnaby">Burnaby</option>
-          <option value="Richmond">Richmond</option>
-        </select>
-      </div>
-    <button class="card__button" onclick="getBookings()">Search</button> 
+      <select name="locations" class="data_input" id="locations">
+        <option value="">-- select your city --</option>
+        <option value="Vancouver">Vancouver</option>
+        <option value="Surrey">Surrey</option>
+        <option value="Burnaby">Burnaby</option>
+        <option value="Richmond">Richmond</option>
+      </select>
     </div>
+    <button class="card__button" onclick="getBookings()">Search</button>
+  </div>
 
-      
+
 
   </div>
   <div>
@@ -46,8 +46,8 @@
 
     <table id="available_stalls" class="table">
       <tr>
-        <th>Longitude</th>
         <th>Latitude</th>
+        <th>Longitude</th>
         <th>Address</th>
         <th>Place</th>
         <th>Description</th>

@@ -17,17 +17,13 @@ function getBookings() {
             for (const parking_id in json) {
                 let tr = document.createElement("tr");
 
-                let idTd = document.createElement("td");
-                idTd.innerText = parking_id
-                tr.appendChild(idTd);
+                let latTd = document.createElement("td");
+                latTd.innerText = json[parking_id].lat
+                tr.appendChild(latTd);
 
                 let lonTd = document.createElement("td");
                 lonTd.innerText = json[parking_id].lon
                 tr.appendChild(lonTd);
-
-                let latTd = document.createElement("td");
-                latTd.innerText = json[parking_id].lat
-                tr.appendChild(latTd);
 
                 let addressTd = document.createElement("td");
                 addressTd.innerText = json[parking_id].address
@@ -42,11 +38,14 @@ function getBookings() {
                 tr.appendChild(descTd);
 
                 let priceTd = document.createElement("td");
-                priceTd.innerText = json[parking_id].price
+                let priceText = json[parking_id].price.toString() + "$ CAD";
+                priceTd.innerText = priceText
                 tr.appendChild(priceTd);
 
                 let imageTd = document.createElement("td");
-                priceTd.innerText = json[parking_id].image_url
+                let imageImage = document.createElement("img");
+                imageImage.setAttribute("src", json[parking_id].image_url)
+                imageTd.appendChild(imageImage)
                 tr.appendChild(imageTd);
 
                 container.appendChild(tr);
