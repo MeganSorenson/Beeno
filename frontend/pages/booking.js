@@ -53,12 +53,14 @@ function getBookings() {
                 bButton.classList.add("card__button");
                 bButton.setAttribute("id", parking_id.toString());
                 bButton.setAttribute("onclick", "handleBookingButton(this.id)")
+                bButton.setAttribute("style", "width:100px")
                 bookTd.appendChild(bButton);
                 tr.appendChild(bookTd);
 
                 let imageTd = document.createElement("td");
                 let imageImage = document.createElement("img");
                 imageImage.setAttribute("src", json[parking_id].image_url);
+                imageImage.width = "200"
                 imageTd.appendChild(imageImage);
                 tr.appendChild(imageTd);
 
