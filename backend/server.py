@@ -114,18 +114,22 @@ def park():
         # payload needs user_id, latitude, longitude, image_url, place, price, description
         # where user_id is the id of the user posting their own parking stall
         parking_data = request.get_json(force=True)
-        user_id = parking_data.get('user_id', "")
-        latitude = parking_data.get('lat', "")
+        
         longitude = parking_data.get('long', "")
-        image_url = parking_data.get('image_url', "")
-        place = parking_data.get('place', "")
+        latitude = parking_data.get('lat', "")
+        address = parking_data.get('address', "")
+        city = parking_data.get('city', "")
+        country = parking_data.get('country', "")
+        description = parking_data.get('description', "")
         price = parking_data.get('price', "")
-        description = parking_data.get('desc', "")
+        user_id = parking_data.get('user_id', "")
+        image_url = parking_data.get('image_url', "")
+        
 
-        if "" in [user_id, latitude, longitude, image_url, place, price, description]:
+        if "" in [longitude, latitude, address, city, country, description, price, user_id, image_url]:
             return jsonify(status="error", message="non-compatible request made to /park")
 
-        return park_manager.add_parking_stall(user_id, latitude, longitude, image_url, place, price, description)
+        return park_manager.add_parking_stall(longitude, latitude, address, city, country, description, price, user_id, image_url)
 
     return jsonify(status="error", message="non-compatible request made to /park")
 
