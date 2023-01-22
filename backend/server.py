@@ -89,6 +89,7 @@ def park():
         # type which is "single" and parking_id
         # type which is "user" and user_id
         # type which is "reserv" and user_id
+        # type which is "book" and user_id
         args = request.args
         type = args.get('type', "")
         if type == "all":
@@ -132,6 +133,18 @@ def park():
                 return jsonify(status="error", message="non-compatible request made to /park")
 
             return park_manager.get_users_reservations(user_id)
+        elif type == "bookings":
+            user_id = args.get("user_id", "")
+
+            if "" in [user_id]:
+                return jsonify(status="error", message="non-compatible request made to /park")
+
+            try:
+                user_id = int(user_id)
+            except:
+                return jsonify(status="error", message="non-compatible request made to /park")
+
+            return park_manager.get_users_bookings(user_id)
         else:
             # if there was no type specified
             return jsonify(status="error", message="non-compatible request made to /park")
