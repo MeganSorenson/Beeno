@@ -97,8 +97,9 @@ class Park_Manager:
     def __init__(self, db):
         self.db = db
 
-    def get_all_parking_with(self, place):
+    def get_all_parking_with(self, place, date):
         # filters through database for ony prking stalls in the given place
+        # filters out parking stalls with reservations on the given date
         # place must be given as City,Country (no space)
         # returns a json with all those parking stalls that were filtered
         cur = self.db.cur
@@ -109,8 +110,37 @@ class Park_Manager:
 
         rows = cur.execute(
             "SELECT * from parking_spots WHERE city=? and country=?", (city, country,))
-        rows_dict = {}
+        rows_dict = self.create_rows_dict(rows)
 
+        filter_rows = cur.execute(
+            "SELECT * from reservations WHERE date=?", (date,))
+        filter_dict = self.create_filter_dict(filter_rows)
+
+        final_rows_dict = {}
+        for id, data in rows_dict.items():
+            if filter_dict == {}:
+                return json.dumps(rows_dict, indent=4)
+            for f_data in filter_dict.values():
+                if not (id == f_data.get('parking_id', "") and date == f_data.get("date", "")):
+                    final_rows_dict[id] = data
+
+        return json.dumps(final_rows_dict, indent=4)
+
+    def create_filter_dict(self, filter_rows):
+        rows_dict = {}
+        for row in filter_rows:
+            id = row[0]
+            data = {
+                "date": row[1],
+                "parking_id": row[2],
+                "reserver_id": row[3]
+            }
+            rows_dict[id] = data
+
+        return rows_dict
+
+    def create_rows_dict(self, rows):
+        rows_dict = {}
         for row in rows:
             id = row[0]
             data = {
@@ -125,7 +155,7 @@ class Park_Manager:
             }
             rows_dict[id] = data
 
-        return json.dumps(rows_dict, indent=4)
+        return rows_dict
 
     def get_parking_stall(self, parking_id):
         # checks if there is a parking_stall in the database with the given parking_id

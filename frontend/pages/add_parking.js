@@ -45,9 +45,7 @@ function handleAddParking() {
         })
         .then(json => {
             console.log(json);
-            if (json.status == "success") {
-                location.reload();
-            }
+            location.reload();
             console.log("llalala");
 
         })
