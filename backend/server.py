@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_managers import User_Manager, Book_Manager, Park_Manager
 from db import Db
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 port = 1999
 db = None
 user_manager = None

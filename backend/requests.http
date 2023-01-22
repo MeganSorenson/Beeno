@@ -1,6 +1,6 @@
 @port = 1999
 @host = localhost
 
-GET http://{{host}}:{{port}}/user
-    ?username=user1
-    &password=password1
+GET http://{{host}}:{{port}}/book
+    ?booking_id=1
+
