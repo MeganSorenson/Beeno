@@ -85,7 +85,7 @@ def park():
     if request.method == 'GET':
         # either gets all parking
         # args needs either
-        # type which is "all", place with city/country
+        # type which is "all", place with city/country and date YYYY-MM-DD
         # type which is "single" and parking_id
         # type which is "user" and user_id
         # type which is "reserv" and user_id
@@ -94,11 +94,12 @@ def park():
         if type == "all":
             # get all parking stalls with the given time and datae available for the given place
             place = args.get('place', "")
+            date = args.get('date', "")
 
-            if "" in [place]:
+            if "" in [place, date]:
                 return jsonify(status="error", message="non-compatible request made to /park")
 
-            return park_manager.get_all_parking_with(place)
+            return park_manager.get_all_parking_with(place, date)
         elif type == "single":
             # get a singe parking stall with the gicen parking_id
             parking_id = args.get('parking_id', "")
