@@ -37,10 +37,9 @@ class User_Manager:
         else:
             cur.execute(
                 "INSERT INTO users (username,password,first_name,last_name,email,phone_number) VALUES (?,?,?,?,?,?)",
-                (username,password,first_name,last_name,email,int(phone_number),))
+                (username, password, first_name, last_name, email, int(phone_number),))
             self.db.conn.commit()
             return jsonify(status="success", message="insert successful")
-        
 
 
 class Book_Manager:
