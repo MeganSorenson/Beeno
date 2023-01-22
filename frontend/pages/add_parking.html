@@ -20,22 +20,7 @@
 
 <body>
   <div id="navbar"></div>
-  <div class="sidenav"> 
-    <div class="card" style="width: 40rem;">
-      <div class="card-header">Add a Parking Spot &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __        </div>
-        <input type="number" class="form-control" id="longitude" placeholder="Longitude" />
-        <input type="number" class="form-control" id="latitude" placeholder="Latitude" />
-        <input type="text" class="form-control" id="address" placeholder="Address" />
-        <input type="text" class="form-control" id="city" placeholder="City" />
-        <input type="text" class="form-control" id="country" placeholder="Country" />
-        <input type="text" class="form-control" id="description" placeholder="Description" />
-        <input type="number" class="form-control" id="price" placeholder="Price" />
-        <input type="text" class="form-control" id="image_url" placeholder="Image URL" />
-        <button onclick="handleAddParking()" class="add__button">Add Spot</button>
-    </div>
-  </div>
-  
-  <div class = "mainvar">
+  <div class="mainvar">
     <div>
       <h2>
         <Center>All My Offerings</Center>
@@ -51,7 +36,7 @@
           <th>Price</th>
         </tr>
         <tr>
-        <!--   <td>49.2859</td>
+          <!--   <td>49.2859</td>
           <td>123.1141</td>
           <td>757 W Hastings St</td>
           <td>Vancouver</td>
@@ -76,8 +61,8 @@
           <th>Parking Stall ID</th>
           <th>Reserver ID</th>
         </tr>
-       <tr>
-        <!--   <td>1</td>
+        <tr>
+          <!--   <td>1</td>
           <td>2023-01-23</td>
           <td>1</td>
           <td>1</td>
@@ -89,6 +74,19 @@
           </td>
         </tr> -->
       </table>
+    </div>
+
+    <div class="card mx-auto" style="width: 40rem;">
+      <div class="card-header">Add a Parking Spot</div>
+      <input type="number" class="form-control" id="longitude" placeholder="Longitude" />
+      <input type="number" class="form-control" id="latitude" placeholder="Latitude" />
+      <input type="text" class="form-control" id="address" placeholder="Address" />
+      <input type="text" class="form-control" id="city" placeholder="City" />
+      <input type="text" class="form-control" id="country" placeholder="Country" />
+      <input type="text" class="form-control" id="description" placeholder="Description" />
+      <input type="number" class="form-control" id="price" placeholder="Price" />
+      <input type="text" class="form-control" id="image_url" placeholder="Image URL" />
+      <button onclick="handleAddParking()" class="add__button">Add Spot</button>
     </div>
   </div>
 </body>
