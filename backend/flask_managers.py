@@ -243,6 +243,26 @@ class Park_Manager:
 
         return rows_array
 
+    def get_users_bookings(self, user_id):
+        # finds all reservations that the given user_id has made
+        # returns json with "reservation_id" and data
+        cur = self.db.cur
+        cur.execute(
+            "SELECT * from reservations WHERE reserver_id=?", (user_id,))
+
+        rows = cur.fetchall()
+        rows_dict = {}
+
+        for row in rows:
+            id = row[0]
+            data = {
+                "date": row[1],
+                "parking_id": row[2]
+            }
+            rows_dict[id] = data
+
+        return json.dumps(rows_dict, indent=4)
+
     def add_parking_stall(self, longitude, latitude, address, city, country, description, price, user_id, image_url):
         # returns a json object with "status" that is either "success" or "error"
         # and "message" that is a description of the status
