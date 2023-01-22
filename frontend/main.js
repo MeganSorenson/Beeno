@@ -8,12 +8,18 @@ function loginHandler() {
     if (username == "" || password == "") {
         return;
     }
-    fetch('http://127.0.0.1:1999/user?username=user1&password=password1')
+    fetch(`http://127.0.0.1:1999/user?username=${username}&password=${password}`)
     .then(response => {
         return response.json();
     })
     .then(json => {
         console.log(json);
+        if (json.status == "success") {
+            setCookie("logged_in", "true", 10)
+            window.location.href="/frontend/pages/booking.html"
+        } else {
+            console.log("login failed")
+        }
     })
     .catch(error => {
         console.log(error);
