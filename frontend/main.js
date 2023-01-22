@@ -8,8 +8,7 @@ function loginHandler() {
     if (username == "" || password == "") {
         return;
     }
-    let url = "http://localhost:1999/user?username=user1&password=password1"
-    fetch(url)
+    fetch('http://127.0.0.1:1999/user?username=user1&password=password1')
     .then(response => {
         return response.json();
     })
@@ -18,7 +17,7 @@ function loginHandler() {
     })
     .catch(error => {
         console.log(error);
-    })
+    });
 }
 
 
