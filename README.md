@@ -2,6 +2,17 @@
 
 Welcome to Beeno! We're a community platform for van-lifers and parking-stall-owners to book and offer overnight parking spaces around the world. 
 
+Features:
+
+- create a personal account with your personal bookings and stall offerings
+- user authentication on login
+- search for available bookings for your selected location and date
+- book a parking stall with a single press of a button
+- view all of your booked parking stalls
+- view all of your offered parking stalls as well as which stalls were booked for what days
+- add a new parking stall offering with data like images, description, and location
+
+
 Here's a quick screen recording of the web app: https://www.youtube.com/watch?v=JKggHhhjm4M
 
 Right now, Beeno runs locally on your machine. 
