@@ -77,7 +77,7 @@ class Book_Manager:
         cur = self.db.cur
 
         cur.execute(
-            "SELECT * FROM reservations WHERE date=? AND parking_id=?", (date,parking_id))
+            "SELECT * FROM reservations WHERE date=? AND parking_id=?", (date, parking_id))
         rows = cur.fetchall()
 
         if len(rows) >= 1:
@@ -85,7 +85,7 @@ class Book_Manager:
         else:
             cur.execute(
                 "INSERT INTO reservations (date,parking_id,reserver_id) VALUES (?,?,?);",
-                (date,parking_id,user_id,))
+                (date, parking_id, user_id,))
             self.db.conn.commit()
             return jsonify(status="success", message="insert successful")
 
@@ -154,6 +154,33 @@ class Park_Manager:
         else:
             return jsonify(status="error", message="no parking stall with given id")
 
+    def get_users_stalls(self, user_id):
+        # checks if there is a parking stall in the database for the given user_id
+        # returns a json of all the parking stalls with the given user_id with keys being the parking_id
+        # or a json error message with "status" that is "error" and "message" that is a description of the error message
+        cur = self.db.cur
+        cur.execute("SELECT * from parking_spots WHERE owner_id=?", (user_id,))
+
+        rows = cur.fetchall()
+
+        if len(rows) == 1:
+            row = rows[0]
+            id = row[0]
+            data = {
+                id: {
+                    "lon": row[1],
+                    "lat": row[2],
+                    "address": row[3],
+                    "place": row[4] + ", " + row[5],
+                    "description": row[6],
+                    "price": row[7],
+                    "image_url": row[9]
+                }
+            }
+            return json.dumps(data, indent=4)
+        else:
+            return jsonify(status="error", message="no parking stall with given id")
+
     def add_parking_stall(self, longitude, latitude, address, city, country, description, price, user_id, image_url):
         # returns a json object with "status" that is either "success" or "error"
         # and "message" that is a description of the status
@@ -163,9 +190,6 @@ class Park_Manager:
         cur.execute(
             "INSERT INTO parking_spots (lon,lat,address,city,country,description,price,owner_id,image_url) VALUES (?,?,?,?,?,?,?,?,?);",
             (longitude, latitude, address, city, country, description, price, user_id, image_url))
-        
+
         self.db.conn.commit()
         return jsonify(status="success", message="insert successful")
-    
-
-    

@@ -87,6 +87,7 @@ def park():
         # args needs either
         # type which is "all", place with city/country
         # type which is "single" and parking_id
+        # typer which is "user" and user_id
         args = request.args
         type = args.get('type', "")
         if type == "all":
@@ -105,6 +106,13 @@ def park():
                 return jsonify(status="error", message="non-compatible request made to /park")
 
             return park_manager.get_parking_stall(parking_id)
+        elif type == "user":
+            user_id = args.get("user_id", "")
+
+            if "" in [user_id]:
+                return jsonify(status="error", message="non-compatible request made to /park")
+
+            return park_manager.get_users_stalls(user_id)
         else:
             # if there was no type specified
             return jsonify(status="error", message="non-compatible request made to /park")
@@ -114,7 +122,7 @@ def park():
         # payload needs user_id, latitude, longitude, image_url, place, price, description
         # where user_id is the id of the user posting their own parking stall
         parking_data = request.get_json(force=True)
-        
+
         longitude = parking_data.get('long', "")
         latitude = parking_data.get('lat', "")
         address = parking_data.get('address', "")
@@ -124,7 +132,6 @@ def park():
         price = parking_data.get('price', "")
         user_id = parking_data.get('user_id', "")
         image_url = parking_data.get('image_url', "")
-        
 
         if "" in [longitude, latitude, address, city, country, description, price, user_id, image_url]:
             return jsonify(status="error", message="non-compatible request made to /park")

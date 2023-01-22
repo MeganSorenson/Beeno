@@ -1,8 +1,8 @@
 @port = 1999
 @host = localhost
 
-GET http://{{host}}:{{port}}/book
-    ?booking_id=1
+GET http://{{host}}:{{port}}/park
+    ?type=user&user_id=1
 ###
 
 GET http://{{host}}:{{port}}/user
