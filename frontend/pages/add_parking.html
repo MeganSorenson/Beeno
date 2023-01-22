@@ -19,39 +19,108 @@
 
 </head>
 
+
 <body>
-  <div id="navbar"></div>
-  <div>
-    <h1>Add Parking</h1>
+  <div class="card" style="width: 40rem;">
+    <div class="card-header">
+      Add a Parking Spot
+    </div>
+      <class="form-group">
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" id="longitutde" placeholder="Longitutde" />
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="latitude" placeholder="Latitude" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-6">
+            <input type="text" class="form-control" id="address" placeholder="Address" />
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="city" placeholder="City" />
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="country" placeholder="Country" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" id="description" placeholder="Description" />
+          </div>
+          <div class="col">
+            <input type="email" class="form-control" id="Price" 
+              placeholder="Price" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" id="user_id" placeholder="Username" />
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="image_URL" placeholder="Image URL" />
+          </div>
+        </div>
+        <button class="btn btn-primary">Add Spot</button>
+  </div>
   </div>
 
   <div>
-    <h2>Enter date parking spot is available:</h2>
-    <input type="date" id="start" name="trip-start" value="2018-07-22" min="2023-01-01" max="2023-12-31">
+    <h2><Center>All My Offerings</Center></h2>
+    <table>
+      <tr>
+        <th>Longitutde</th>
+        <th>Latitude</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>User ID</th>
+        <th>Image</th>
+      </tr>
+      <tr>
+        <td>49.2859</td>
+        <td>123.1141</td>
+        <td>757 W Hastings St</td>
+        <td>Vancouver</td>
+        <td>Canada</td>
+        <td>Sinclair Centre is an upscale shopping mall in Downtown Vancouver, British Columbia. It is located at 757 West Hastings Street between Granville and Howe streets</td>
+        <td>134</td>
+        <td><img src=https://lh3.googleusercontent.com/p/AF1QipOYJpgNNloeaKSJQ62CBIjzibYqW2FU5RIuwWzt=s680-w680-h510></td>
+      </tr>
+    </table>
   </div>
 
   <div>
-    <h2>Choose city:</h2>
-    <form action="#">
-      <label for="city">City</label>
-      <select name="city" id="city">
-        <option value="Vancouver">Vancouver</option>
-        <option value="Surrey">Surrey</option>
-        <option value="Burnaby">Burnaby</option>
-        <option value="Richmond">Richmond</option>
-      </select>
-    </form>
-
-  </div>
-  <h2>Upload picture</h2>
-  <form action="/action_page.php">
-    <input type="file" id="myFile" name="filename">
-    <input type="submit">
-  </form>
-
-  <div>
-    <input id="clickMe" type="button" value="Add parking spot" onclick="AddSpot();" />
+    <h2><center>Offerings Filled</center></h2>
+    <table>
+      <tr>
+        <th>Longitutde</th>
+        <th>Latitude</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>User ID</th>
+        <th>Image</th>
+      </tr>
+      <tr>
+        <td>49.2859</td>
+        <td>123.1141</td>
+        <td>757 W Hastings St</td>
+        <td>Vancouver</td>
+        <td>Canada</td>
+        <td>Sinclair Centre is an upscale shopping mall in Downtown Vancouver, British Columbia. It is located at 757 West Hastings Street between Granville and Howe streets</td>
+        <td>134</td>
+        <td><img src=https://lh3.googleusercontent.com/p/AF1QipOYJpgNNloeaKSJQ62CBIjzibYqW2FU5RIuwWzt=s680-w680-h510></td>
+      </tr>
+    </table>
   </div>
 </body>
 
 </html>
+
+
