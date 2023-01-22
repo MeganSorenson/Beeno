@@ -58,9 +58,9 @@ function getBookings() {
 
 $(document).ready(function () {
     console.log("ready!");
-    let loc_id = locations
+    let city_id = city
 
-    fetch(`http://127.0.0.1:1999/park?type=user&user_id=${loc_id}`)
+    fetch(`http://127.0.0.1:1999/park?type=all&city_id=${city}`)
         .then(response => {
             return response.json();
         })
@@ -70,12 +70,16 @@ $(document).ready(function () {
             for (const parking_id in json) {
                 let tr = document.createElement("tr");
 
+                let idTd = document.createElement("td");
+                idTd.innerText = parking_id
+                tr.appendChild(idTd);
+
                 let lonTd = document.createElement("td");
                 lonTd.innerText = json[parking_id].lon
                 tr.appendChild(lonTd);
 
                 let latTd = document.createElement("td");
-                placeTd.innerText = json[parking_id].lat
+                latTd.innerText = json[parking_id].lat
                 tr.appendChild(latTd);
 
                 let addressTd = document.createElement("td");
@@ -83,15 +87,15 @@ $(document).ready(function () {
                 tr.appendChild(addressTd);
 
                 let placeTd = document.createElement("td");
-                addressTd.innerText = json[parking_id].place
+                placeTd.innerText = json[parking_id].place
                 tr.appendChild(placeTd);
 
-                let descriptionTd = document.createElement("td");
-                addressTd.innerText = json[parking_id].description
-                tr.appendChild(descriptionTd);
+                let descTd = document.createElement("td");
+                descTd.innerText = json[parking_id].description
+                tr.appendChild(descTd);
 
                 let priceTd = document.createElement("td");
-                addressTd.innerText = json[parking_id].price
+                priceTd.innerText = json[parking_id].price
                 tr.appendChild(priceTd);
 
                 container.appendChild(tr);

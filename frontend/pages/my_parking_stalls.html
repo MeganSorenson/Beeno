@@ -15,38 +15,26 @@
 
 <body>
   <div id="navbar"></div>
-  <div>
-    <h1>My Bookings</h1>
+  <div> 
+    <h2>
+    <Center>My Bookings</Center>
+  </h2>
   </div>
-
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-
-  <table id="myTable">
-    <tr class="header">
-      <th style="width:50%;">Date</th>
-      <th style="width:50%;">City</th>
-    </tr>
-    <tr>
-      <td>July 31</td>
-      <td>Vancouver</td>
-    </tr>
-    <tr>
-      <td>Sept 30</td>
-      <td>Burnaby</td>
-    </tr>
-    <tr>
-      <td>Dec 25</td>
-      <td>Richmond</td>
-    </tr>
-  </table>
-
-  <div>
-    <a href="add_parking.html">
-      <input id="clickMe" type="button" value="Post a parking spot" onclick="PostSpot();" />
-    </a>
-  </div>
-
-  <div id="list_of_my_parking"></div>
+  
+    <div class="container-fluid">
+  
+      <table id="list_of_my_parking" class="table">
+        <tr>
+          <th>Longitutde</th>
+          <th>Latitude</th>
+          <th>Address</th>
+          <th>Place</th>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+    </table>
+    </div>
+    </div>
 
 </body>
 
