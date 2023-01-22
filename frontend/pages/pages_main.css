@@ -77,10 +77,9 @@ body{
 }
 
 .map-border{
-    min-height: 100rem;
-    height: auto;
+    min-height: 40rem;
+    height: 90%;
     width: 100%;
-    
 }
 
 #marker {
@@ -92,6 +91,6 @@ body{
     cursor: pointer;
     }
 
-    .mapboxgl-popup {
-        max-width: 200px;
-        }
+.mapboxgl-popup {
+    max-width: 200px;
+    }

@@ -17,7 +17,14 @@
 </head>
 <body>
     <div id="navbar"></div>
-    <h1>Map View</h1>
+    <h1>Map View</h1> 
+    <div class="data_field_container">
+        <div class="data_field">
+            <input type="text" class="data_input" id="date" placeholder="Date: YYYY-MM-DD" />
+        </div>
+        <button class="card__button" onclick="getBookings()">Search</button>
+    </div>
+        
     <div id="map" class="map-border"></div>
     <script src="map.js"></script>
 
