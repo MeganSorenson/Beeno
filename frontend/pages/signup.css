@@ -1,0 +1,39 @@
+body{
+    --color-1: #98b32c;
+    --color-1-dark: #74811f;
+    --color-2: #252c6a;
+    --border-radius: 10px;
+
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/17933764-1869381469976325-6640288871504412672-n-1492752246.jpg);
+    background-size: cover;
+}
+
+.card__button{
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: var(--color-1);
+}
+
+.card__title1{
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 40px;
+}
+
+.card__title2{
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 25px;
+}
