@@ -2,20 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Parking</title>
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous"
-  />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="add_parking.js"></script>
-    <script src="../navbar.js"></script>
-</script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Parking</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../utility.js"></script>
+  <script src="add_parking.js"></script>
+  <script src="../navbar.js"></script>
+  </script>
 
 </head>
 
@@ -25,49 +22,47 @@
     <div class="card-header">
       Add a Parking Spot
     </div>
-      <class="form-group">
-        <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" id="longitutde" placeholder="Longitutde" />
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" id="latitude" placeholder="Latitude" />
-          </div>
+    <class="form-group">
+      <div class="form-row">
+        <div class="col">
+          <input type="number" class="form-control" id="longitude" placeholder="Longitude" />
         </div>
-        <div class="form-row">
-          <div class="col-6">
-            <input type="text" class="form-control" id="address" placeholder="Address" />
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" id="city" placeholder="City" />
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" id="country" placeholder="Country" />
-          </div>
+        <div class="col">
+          <input type="number" class="form-control" id="latitude" placeholder="Latitude" />
         </div>
-        <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" id="description" placeholder="Description" />
-          </div>
-          <div class="col">
-            <input type="email" class="form-control" id="Price" 
-              placeholder="Price" />
-          </div>
+      </div>
+      <div class="form-row">
+        <div class="col-6">
+          <input type="text" class="form-control" id="address" placeholder="Address" />
         </div>
-        <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" id="user_id" placeholder="Username" />
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" id="image_URL" placeholder="Image URL" />
-          </div>
+        <div class="col">
+          <input type="text" class="form-control" id="city" placeholder="City" />
         </div>
-        <button class="btn btn-primary">Add Spot</button>
+        <div class="col">
+          <input type="text" class="form-control" id="country" placeholder="Country" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" id="description" placeholder="Description" />
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" id="price" placeholder="Price" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" id="image_url" placeholder="Image URL" />
+        </div>
+      </div>
+      <button onclick="handleAddParking()" class="btn btn-primary">Add Spot</button>
   </div>
   </div>
 
   <div>
-    <h2><Center>All My Offerings</Center></h2>
+    <h2>
+      <Center>All My Offerings</Center>
+    </h2>
     <table>
       <tr>
         <th>Longitutde</th>
@@ -86,15 +81,19 @@
         <td>757 W Hastings St</td>
         <td>Vancouver</td>
         <td>Canada</td>
-        <td>Sinclair Centre is an upscale shopping mall in Downtown Vancouver, British Columbia. It is located at 757 West Hastings Street between Granville and Howe streets</td>
+        <td>Sinclair Centre is an upscale shopping mall in Downtown Vancouver, British Columbia. It is located at 757
+          West Hastings Street between Granville and Howe streets</td>
         <td>134</td>
-        <td><img src=https://lh3.googleusercontent.com/p/AF1QipOYJpgNNloeaKSJQ62CBIjzibYqW2FU5RIuwWzt=s680-w680-h510></td>
+        <td><img src=https://lh3.googleusercontent.com/p/AF1QipOYJpgNNloeaKSJQ62CBIjzibYqW2FU5RIuwWzt=s680-w680-h510>
+        </td>
       </tr>
     </table>
   </div>
 
   <div>
-    <h2><center>Offerings Filled</center></h2>
+    <h2>
+      <center>Offerings Filled</center>
+    </h2>
     <table>
       <tr>
         <th>Longitutde</th>
@@ -113,14 +112,14 @@
         <td>757 W Hastings St</td>
         <td>Vancouver</td>
         <td>Canada</td>
-        <td>Sinclair Centre is an upscale shopping mall in Downtown Vancouver, British Columbia. It is located at 757 West Hastings Street between Granville and Howe streets</td>
+        <td>Sinclair Centre is an upscale shopping mall in Downtown Vancouver, British Columbia. It is located at 757
+          West Hastings Street between Granville and Howe streets</td>
         <td>134</td>
-        <td><img src=https://lh3.googleusercontent.com/p/AF1QipOYJpgNNloeaKSJQ62CBIjzibYqW2FU5RIuwWzt=s680-w680-h510></td>
+        <td><img src=https://lh3.googleusercontent.com/p/AF1QipOYJpgNNloeaKSJQ62CBIjzibYqW2FU5RIuwWzt=s680-w680-h510>
+        </td>
       </tr>
     </table>
   </div>
 </body>
 
 </html>
-
-

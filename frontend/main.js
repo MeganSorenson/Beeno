@@ -17,7 +17,7 @@ function loginHandler() {
             console.log(json);
             if (json.status == "success") {
                 setCookie("logged_in", "true", 10);
-
+                setCookie("user_id", json.user_id, 10);
                 window.location.href = "/pages/booking.html"
             } else {
                 console.log("login failed")

@@ -141,7 +141,7 @@ def park():
         # where user_id is the id of the user posting their own parking stall
         parking_data = request.get_json(force=True)
 
-        longitude = parking_data.get('long', "")
+        longitude = parking_data.get('lon', "")
         latitude = parking_data.get('lat', "")
         address = parking_data.get('address', "")
         city = parking_data.get('city', "")

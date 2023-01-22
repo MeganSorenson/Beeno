@@ -9,8 +9,8 @@ POST http://{{host}}:{{port}}/park
 content-type: application/json
 
 {
-    "long": 9,
-    "lat": 2.0,
+    "long": 2,
+    "lat": 2,
     "address":"fce",
     "city":"lce",
     "country":"csce",
@@ -27,7 +27,7 @@ GET http://{{host}}:{{port}}/user
 
 ###
 
-POST http://{{host}}:{{port}}/user 
+POST http://{{host}}:{{port}}/park 
 content-type: application/json
 
 {
