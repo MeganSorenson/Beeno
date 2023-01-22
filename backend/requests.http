@@ -3,4 +3,38 @@
 
 GET http://{{host}}:{{port}}/book
     ?booking_id=1
+###
+
+GET http://{{host}}:{{port}}/user
+    ?username=user1
+    &password=password1
+
+###
+
+POST http://{{host}}:{{port}}/user 
+content-type: application/json
+
+{
+    "username":"user9",
+    "password":"password9",
+    "first_name":"first9",
+    "last_name":"last9",
+    "email":"user9@beeno.com",
+    "phone_number":9999999999
+
+}
+
+###
+
+POST http://{{host}}:{{port}}/book 
+content-type: application/json
+
+{
+    "date":"2023-02-01",
+    "parking_id":1,
+    "user_id":1
+}
+
+
+
 
