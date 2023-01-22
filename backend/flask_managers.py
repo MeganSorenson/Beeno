@@ -155,7 +155,18 @@ class Park_Manager:
         else:
             return jsonify(status="error", message="no parking stall with given id")
 
-    def add_parking_stall(self, user_id, latitude, longitude, image_url, place, price, description):
+    def add_parking_stall(self, longitude, latitude, address, city, country, description, price, user_id, image_url):
         # returns a json object with "status" that is either "success" or "error"
         # and "message" that is a description of the status
-        pass
+
+        cur = self.db.cur
+
+        cur.execute(
+            "INSERT INTO parking_spots (lon,lat,address,city,country,description,price,owner_id,image_url) VALUES (?,?,?,?,?,?,?,?,?);",
+            (longitude, latitude, address, city, country, description, price, user_id, image_url))
+        
+        self.db.conn.commit()
+        return jsonify(status="success", message="insert successful")
+    
+
+    
