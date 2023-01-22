@@ -87,7 +87,8 @@ def park():
         # args needs either
         # type which is "all", place with city/country
         # type which is "single" and parking_id
-        # typer which is "user" and user_id
+        # type which is "user" and user_id
+        # type which is "reserv" and user_id
         args = request.args
         type = args.get('type', "")
         if type == "all":
@@ -112,7 +113,24 @@ def park():
             if "" in [user_id]:
                 return jsonify(status="error", message="non-compatible request made to /park")
 
+            try:
+                user_id = int(user_id)
+            except:
+                return jsonify(status="error", message="non-compatible request made to /park")
+
             return park_manager.get_users_stalls(user_id)
+        elif type == "reserv":
+            user_id = args.get("user_id", "")
+
+            if "" in [user_id]:
+                return jsonify(status="error", message="non-compatible request made to /park")
+
+            try:
+                user_id = int(user_id)
+            except:
+                return jsonify(status="error", message="non-compatible request made to /park")
+
+            return park_manager.get_users_reservations(user_id)
         else:
             # if there was no type specified
             return jsonify(status="error", message="non-compatible request made to /park")
@@ -134,6 +152,13 @@ def park():
         image_url = parking_data.get('image_url', "")
 
         if "" in [longitude, latitude, address, city, country, description, price, user_id, image_url]:
+            return jsonify(status="error", message="non-compatible request made to /park")
+
+        try:
+            longitude = float(longitude)
+            latitude = float(latitude)
+            price = float(price)
+        except:
             return jsonify(status="error", message="non-compatible request made to /park")
 
         return park_manager.add_parking_stall(longitude, latitude, address, city, country, description, price, user_id, image_url)

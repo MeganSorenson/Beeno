@@ -157,29 +157,63 @@ class Park_Manager:
     def get_users_stalls(self, user_id):
         # checks if there is a parking stall in the database for the given user_id
         # returns a json of all the parking stalls with the given user_id with keys being the parking_id
-        # or a json error message with "status" that is "error" and "message" that is a description of the error message
         cur = self.db.cur
         cur.execute("SELECT * from parking_spots WHERE owner_id=?", (user_id,))
 
         rows = cur.fetchall()
+        rows_dict = {}
 
-        if len(rows) == 1:
-            row = rows[0]
+        for row in rows:
             id = row[0]
             data = {
-                id: {
-                    "lon": row[1],
-                    "lat": row[2],
-                    "address": row[3],
-                    "place": row[4] + ", " + row[5],
-                    "description": row[6],
-                    "price": row[7],
-                    "image_url": row[9]
-                }
+                "lon": row[1],
+                "lat": row[2],
+                "address": row[3],
+                "place": row[4] + ", " + row[5],
+                "description": row[6],
+                "price": row[7],
+                "image_url": row[9]
             }
-            return json.dumps(data, indent=4)
-        else:
-            return jsonify(status="error", message="no parking stall with given id")
+            rows_dict[id] = data
+
+        return json.dumps(rows_dict, indent=4)
+
+    def get_users_reservations(self, user_id):
+        # checks if there is a reservation in the database for the given user_id (where user_id is stall owner)
+        # returns a json of all the reservations with the given user_id with keys being the reservation_id
+        parking_ids = self.get_parking_ids_for_user(user_id)
+        result_dict = {}
+
+        for id in parking_ids:
+            cur = self.db.cur
+            cur.execute("SELECT * from reservations WHERE parking_id=?", (id,))
+
+            rows = cur.fetchall()
+            if len(rows) > 0:
+                for row in rows:
+                    p_id = row[0]
+                    data = {
+                        "date": row[1],
+                        "parking_id": row[2],
+                        "reserver_id": row[3]
+                    }
+                    result_dict[p_id] = data
+
+        return json.dumps(result_dict, indent=4)
+
+    def get_parking_ids_for_user(self, user_id):
+        # returns a list of all the parking ids that the owner has offered
+        cur = self.db.cur
+        cur.execute("SELECT * from parking_spots WHERE owner_id=?", (user_id,))
+
+        rows = cur.fetchall()
+        rows_array = []
+
+        for row in rows:
+            id = row[0]
+            rows_array.append(id)
+
+        return rows_array
 
     def add_parking_stall(self, longitude, latitude, address, city, country, description, price, user_id, image_url):
         # returns a json object with "status" that is either "success" or "error"
