@@ -1,0 +1,87 @@
+body{
+    --color-1: #98b32c;
+    --color-1-dark: #74811f;
+    --color-2: #252c6a;
+    --border-radius: 10px;
+
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/17933764-1869381469976325-6640288871504412672-n-1492752246.jpg);
+    background-size: cover;
+}
+
+.signincard {
+    width: 450px;
+    max-width: 500px;
+    padding: 2rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    background: #ffffff;
+    opacity: 95%;
+}
+
+
+.card__link {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.card__link:hover {
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card__title1{
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 40px;
+}
+
+.card__title2{
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 25px;
+}
+
+
+.card__input:focus {
+    border-color: var(--color-1);
+    background: #ffffff;
+}
+
+.card_input-group{
+    margin-bottom: 1rem;
+}
+
+.card_input{
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border: 1px solid #dddddd;
+    background: #eeeeee;
+}
+
+.card__button{
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: var(--color-1);
+}
+
+.card__button:hover{
+    background: var(--color-1-dark);
+}

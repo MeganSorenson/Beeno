@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.root": "/frontend"
+    "liveServer.settings.root": "/frontend",
+    "python.analysis.typeCheckingMode": "off"
 }
