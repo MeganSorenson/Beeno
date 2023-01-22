@@ -75,3 +75,23 @@ body{
 .add__button:hover{
     background: var(--color-1-dark);
 }
+
+.map-border{
+    min-height: 100rem;
+    height: auto;
+    width: 100%;
+    
+}
+
+#marker {
+    background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    }
+
+    .mapboxgl-popup {
+        max-width: 200px;
+        }
