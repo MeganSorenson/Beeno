@@ -23,34 +23,3 @@ new mapboxgl.Marker(el)
     .setPopup(popup) // sets a popup on this marker
     .addTo(map)
 
-
-function getBookings() {
-    console.log("test");
-
-    let date = document.getElementById("date").value;
-    let place = document.getElementById("locations").value;
-    let coordinates = document.getElementById("locations").value;
-
-
-    let url = `http://127.0.0.1:1999/park?type=all&place=${place}&date=${date}`;
-
-    fetch(url)
-        .then(response => {
-            return response.json();
-        })
-        .then(json => {
-            console.log(json);
-            let container = document.getElementById("available_stalls");
-            for (const parking_id in json) {
-                new mapboxgl.Marker(el)
-                    .setLngLat(coordinates)
-                    .setPopup(popup) // sets a popup on this marker
-                    .addTo(map)
-
-                container.appendChild(tr);
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
-}
