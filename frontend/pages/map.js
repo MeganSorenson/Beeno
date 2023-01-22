@@ -12,16 +12,16 @@ const map = new mapboxgl.Map({
 const popup = new mapboxgl.Popup({ offset: 25 }).setText(
     'Construction on the Washington Monument began in 1848.<a href=google.com>test</a>'
 );
-     
+
 // create DOM element for the marker
 const el = document.createElement('div');
 el.id = 'marker';
-    
+
 // create the marker
 new mapboxgl.Marker(el)
-.setLngLat(monument)
-.setPopup(popup) // sets a popup on this marker
-.addTo(map)
+    .setLngLat(monument)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map)
 
 
 function getBookings() {
@@ -29,6 +29,7 @@ function getBookings() {
 
     let date = document.getElementById("date").value;
     let place = document.getElementById("locations").value;
+    let coordinates = document.getElementById("locations").value;
 
 
     let url = `http://127.0.0.1:1999/park?type=all&place=${place}&date=${date}`;
@@ -41,11 +42,10 @@ function getBookings() {
             console.log(json);
             let container = document.getElementById("available_stalls");
             for (const parking_id in json) {
-                let tr = document.createElement("tr");
-
-                let latTd = document.createElement("td");
-                latTd.innerText = json[parking_id].lat
-                tr.appendChild(latTd);
+                new mapboxgl.Marker(el)
+                    .setLngLat(coordinates)
+                    .setPopup(popup) // sets a popup on this marker
+                    .addTo(map)
 
                 container.appendChild(tr);
             }
