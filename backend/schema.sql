@@ -34,8 +34,6 @@ CREATE TABLE reservations (
     date DATETIME NOT NULL,
     parking_id INTEGER NOT NULL,
     reserver_id INTEGER NOT NULL,
-    owner_id INTEGER NOT NULL,
     FOREIGN KEY (parking_id) REFERENCES parking_spots(id),
-    FOREIGN KEY (reserver_id) REFERENCES users(id),
-    FOREIGN KEY (owner_id) REFERENCES users(id)
+    FOREIGN KEY (reserver_id) REFERENCES users(id)
 );
