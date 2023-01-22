@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Parking</title>
-    <script src="add_parking.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Parking</title>
+  <script src="add_parking.js"></script>
 </head>
+
 <body>
-    <div>
-        <h1>Add Parking</h1>
-    </div>
-    
-    <div>
-        <h2>Enter date parking spot is available:</h2>
-        <input type="date" id="start" name="trip-start"
-        value="2018-07-22"
-        min="2023-01-01" max="2023-12-31">
-      </div>
+  <div>
+    <h1>Add Parking</h1>
+  </div>
 
-      <div>
-        <h2>Choose city:</h2>
-        <form action="#">
-            <label for="city">City</label>
-            <select name="city" id="city">
-              <option value="Vancouver">Vancouver</option>
-              <option value="Surrey">Surrey</option>
-              <option value="Burnaby">Burnaby</option>
-              <option value="Richmond">Richmond</option>
-            </select>
-      </form>
+  <div>
+    <h2>Enter date parking spot is available:</h2>
+    <input type="date" id="start" name="trip-start" value="2018-07-22" min="2023-01-01" max="2023-12-31">
+  </div>
 
-      </div>
-      <h2>Upload picture</h2>
-      <form action="/action_page.php">
-        <input type="file" id="myFile" name="filename">
-        <input type="submit">
-      </form>
+  <div>
+    <h2>Choose city:</h2>
+    <form action="#">
+      <label for="city">City</label>
+      <select name="city" id="city">
+        <option value="Vancouver">Vancouver</option>
+        <option value="Surrey">Surrey</option>
+        <option value="Burnaby">Burnaby</option>
+        <option value="Richmond">Richmond</option>
+      </select>
+    </form>
 
-      <div>
-                <input id="clickMe" type="button" value="Add parking spot" onclick="AddSpot();" />
-      </div>
+  </div>
+  <h2>Upload picture</h2>
+  <form action="/action_page.php">
+    <input type="file" id="myFile" name="filename">
+    <input type="submit">
+  </form>
+
+  <div>
+    <input id="clickMe" type="button" value="Add parking spot" onclick="AddSpot();" />
+  </div>
 </body>
+
 </html>
