@@ -75,13 +75,25 @@ $(document).ready(function () {
                 lonTd.innerText = json[parking_id].lon
                 tr.appendChild(lonTd);
 
-                let placeTd = document.createElement("td");
-                placeTd.innerText = json[parking_id].place
-                tr.appendChild(placeTd);
+                let latTd = document.createElement("td");
+                latTd.innerText = json[parking_id].lat
+                tr.appendChild(latTd);
 
                 let addressTd = document.createElement("td");
                 addressTd.innerText = json[parking_id].address
                 tr.appendChild(addressTd);
+
+                let placeTd = document.createElement("td");
+                placeTd.innerText = json[parking_id].place
+                tr.appendChild(placeTd);
+
+                let descTd = document.createElement("td");
+                descTd.innerText = json[parking_id].description
+                tr.appendChild(descTd);
+
+                let priceTd = document.createElement("td");
+                priceTd.innerText = json[parking_id].price
+                tr.appendChild(priceTd);
 
                 container.appendChild(tr);
             }
