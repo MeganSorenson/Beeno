@@ -97,6 +97,15 @@ class Park_Manager:
     def __init__(self, db):
         self.db = db
 
+    def get_all_parking_by_date(self, date):
+        # gets all available oarking stalls for a day, does not matter location
+        # returns a json with all those parking stalls that were filtered
+        cur = self.db.cur
+        rows = cur.execute("SELECT * from parking_spots")
+        rows_dict = self.create_rows_dict(rows)
+
+        return json.dumps(rows_dict, indent=4)
+
     def get_all_parking_with(self, place, date):
         # filters through database for ony prking stalls in the given place
         # filters out parking stalls with reservations on the given date
