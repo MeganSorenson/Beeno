@@ -104,12 +104,8 @@ class Park_Manager:
         # returns a json with all those parking stalls that were filtered
         cur = self.db.cur
 
-        place = place.split(",")
-        city = place[0]
-        country = place[1]
-
         rows = cur.execute(
-            "SELECT * from parking_spots WHERE city=? and country=?", (city, country,))
+            "SELECT * from parking_spots WHERE city=?", (place,))
         rows_dict = self.create_rows_dict(rows)
 
         filter_rows = cur.execute(
