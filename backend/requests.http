@@ -2,5 +2,5 @@
 @host = localhost
 
 GET http://{{host}}:{{port}}/user
-    ?username=admin
-    &password=password
+    ?username=user1
+    &password=password1

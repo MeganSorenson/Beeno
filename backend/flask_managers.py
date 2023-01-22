@@ -1,3 +1,6 @@
+from flask import jsonify
+
+
 class User_Manager:
     # creates a user manager that encapsulates the functionality of an http request to /user
     def __init__(self, db):
@@ -7,7 +10,16 @@ class User_Manager:
         # checks the database if the username and the password match
         # returns a json object with "status" that is either "success" or "error"
         # and "message" that is a description of the status
-        pass
+        cur = self.db.cur
+        cur.execute(
+            "SELECT * from users WHERE username=? and password=?", (username, password,))
+
+        rows = cur.fetchall()
+
+        if len(rows) == 1:
+            return jsonify(status="success", message="login successful")
+        else:
+            return jsonify(status="error", message="invalid username or password, login unsuccesful")
 
     def add_new_user(self, username, password, email, first_name, last_name, phone_number):
         # adds new user to the database with the given user_info

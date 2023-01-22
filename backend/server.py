@@ -132,6 +132,7 @@ def park():
 if __name__ == "__main__":
     db = Db(db_name)
     db.init_db()
+    db.insert_sample()
 
     user_manager = User_Manager(db)
     book_manager = Book_Manager(db)
