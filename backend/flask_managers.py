@@ -26,7 +26,21 @@ class User_Manager:
         # adds new user to the database with the given user_info
         # returns a json object with "status" that is either "success" or "error"
         # and "message" that is a description of the status
-        pass
+        cur = self.db.cur
+
+        cur.execute(
+            "SELECT * from users WHERE username=?", (username,))
+        rows = cur.fetchall()
+
+        if len(rows) >= 1:
+            return jsonify(status="error", message="username already taken")
+        else:
+            cur.execute(
+                "INSERT INTO users (username,password,first_name,last_name,email,phone_number) VALUES (?,?,?,?,?,?)",
+                (username,password,first_name,last_name,email,int(phone_number),))
+            self.db.conn.commit()
+            return jsonify(status="success", message="insert successful")
+        
 
 
 class Book_Manager:

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="main.js"></script>
     <title>Login</title>
 </head>
@@ -18,52 +16,43 @@
     <div class="card" style="width: 18rem;">
         <div class="card-header">
             Login
-          </div>
+        </div>
 
-    <form>
         <div class="col">
-        <input
-                type="text"
-                class="form-control"
-                id="username"
-                placeholder="Username"
-              />
+            <input type="text" class="form-control" id="username" placeholder="Username" />
+        </div>
+        <div class="col">
+            <input type="password" class="form-control" id="password" placeholder="Password" />
+        </div>
+        <div class="col">
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <button class="btn btn-primary" onclick="loginHandler()">Login</button>
+                </div>
+                <div class="p-2">
+                    <a class="dropdown-item" href="#" data-inline="true">Forgot password?</a>
+                </div>
             </div>
-              <div class="col">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="Password"
-                  placeholder="Password"
-                />
-              </div>
-              <div class="col">          
-    <div class="d-flex flex-row">
-        <div class="p-2">
-              <button type="submit" class="btn btn-primary" onclick="loginHandler()">Login</button>
-            </div>
-            <div class="p-2">
-      <a class="dropdown-item" href="#" data-inline="true">Forgot password?</a>
+        </div>
+
+        <div class="dropdown-divider"></div>
+        <div class="col">
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <h6 data-inline="true">New around here?</h6>
+                </div>
+                <div class="p-2">
+                    <button type="submit" class="btn btn-primary" href="signup.html" data-inline="true">Sign up</button>
+                </div>
             </div>
         </div>
     </div>
-</form>
-      <div class="dropdown-divider"></div>
-      <div class="col">
-      <div class="d-flex flex-row">
-        <div class="p-2">
-      <h6 data-inline="true">New around here?</h6></div>
-      <div class="p-2">
-      <button type="submit" class="btn btn-primary" href="signup.html" data-inline="true">Sign up</button>
-      </div>
-    </div>  
-    </div>
-    </div>
 </div>
-      
-      
-     <a href="pages/booking.html">
-        booking
-      </a>
+
+
+<a href="pages/booking.html">
+    booking
+</a>
 </body>
+
 </html>

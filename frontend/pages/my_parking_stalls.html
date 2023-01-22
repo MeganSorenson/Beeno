@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Stalls</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="my_parking_stalls.js"></script>
 </head>
 
 <body>
-    <div>
-        <h1>My Parking Stalls</h1>
-    </div>
+  <div>
+    <h1>My Parking Stalls</h1>
+  </div>
 
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 
-<table id="myTable">
-  <tr class="header">
-    <th style="width:50%;">Date</th>
-    <th style="width:50%;">City</th>
-  </tr>
-  <tr>
-    <td>July 31</td>
-    <td>Vancouver</td>
-  </tr>
-  <tr>
-    <td>Sept 30</td>
-    <td>Burnaby</td>
-  </tr>
-  <tr>
-    <td>Dec 25</td>
-    <td>Richmond</td>
-  </tr>
-</table>
+  <table id="myTable">
+    <tr class="header">
+      <th style="width:50%;">Date</th>
+      <th style="width:50%;">City</th>
+    </tr>
+    <tr>
+      <td>July 31</td>
+      <td>Vancouver</td>
+    </tr>
+    <tr>
+      <td>Sept 30</td>
+      <td>Burnaby</td>
+    </tr>
+    <tr>
+      <td>Dec 25</td>
+      <td>Richmond</td>
+    </tr>
+  </table>
 
-<div>
+  <div>
     <a href="add_parking.html">
-        <input id="clickMe" type="button" value="Post a parking spot" onclick="PostSpot();" />
+      <input id="clickMe" type="button" value="Post a parking spot" onclick="PostSpot();" />
     </a>
-    
-    </div>
+
+  </div>
 
 </body>
+
 </html>
